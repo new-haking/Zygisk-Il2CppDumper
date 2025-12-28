@@ -28,16 +28,12 @@ jobs:
 
     - name: Configure Package Name
       run: |
-        # Lógica para definir o nome do pacote (manual ou automático)
         if [ -n "${{ github.event.inputs.package_name }}" ]; then
           PKG_NAME="${{ github.event.inputs.package_name }}"
         else
           PKG_NAME="com.example.game"
         fi
-        
         echo "Building for package: $PKG_NAME"
-        
-        # Substituições seguras usando sed
         sed -i "s/moduleDescription = \"/moduleDescription = \"($PKG_NAME) /g" module.gradle
         sed -i "s/com.game.packagename/$PKG_NAME/g" module/src/main/cpp/game.h
 
@@ -48,4 +44,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: zygisk-il2cppdumper
-        path: out/magisk_module_release/*.zip
+        path: out/*.zip
