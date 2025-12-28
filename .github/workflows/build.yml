@@ -8,7 +8,7 @@ on:
       package_name:
         description: "Package name of the game (ex: com.pubg.imobile)"
         required: false
-        default: "com.example.game"
+        default: "com.dts.freefireth"
 
 jobs:
   build:
